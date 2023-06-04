@@ -8,7 +8,7 @@ import TodoList from "./components/TodoList";
 
 function App() {
     const [title, setTitle] = useState('')
-    const [color, setColor] = useState('light')
+    const [theme, setTheme] = useState('light')
     const dispatch = useAppDispatch()
     const {error, pending} = useAppSelector(state => state.todo)
 
@@ -20,24 +20,24 @@ function App() {
         dispatch(addTodo(title))
     }
 
-    const onClickColor = () => {
-        setColor(color === 'light' ? 'dark' : 'light')
-    }
-
     useEffect(() => {
-        document.body.setAttribute('data-color', color)
-    }, [color])
+        document.body.setAttribute('theme-data', theme)
+    },[theme])
+
+    const onClickHandlerTheme = () => {
+        setTheme(theme === 'light' ? 'dark' : 'light')
+    }
 
 
     return (
         <div className="App">
-                <button onClick={onClickColor}>Color</button>
-                <h3>Todo-List:</h3>
-                <TodoInput title={title} setTitle={setTitle} addTodo={addTask}/>
-                <br/>
-                {pending && <h3>Loading...</h3>}
-                {error && <h3>{error}</h3>}
-                <TodoList/>
+            <button onClick={onClickHandlerTheme}>theme</button>
+            <h3>Todo-List:</h3>
+            <TodoInput title={title} setTitle={setTitle} addTodo={addTask}/>
+            <br/>
+            {pending && <h3>Loading...</h3>}
+            {error && <h3>{error}</h3>}
+            <TodoList/>
         </div>
     );
 }

@@ -1,11 +1,13 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
-body[data-color='light'] {
-  background: white;
+body[theme-data='light'] {
+    background: white;
 }
-body[data-color='dark'] {
-  background: black;
-  color: white;
+
+
+body[theme-data='dark'] {
+    background: black;
+    color: white;
 }
