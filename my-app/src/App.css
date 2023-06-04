@@ -1,4 +1,11 @@
 .App {
-  background: white;
   text-align: center;
+}
+
+body[data-color='light'] {
+  background: white;
+}
+body[data-color='dark'] {
+  background: black;
+  color: white;
 }
