@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-
 import './App.css';
 import {useAppDispatch, useAppSelector} from "./Hooks/hooks";
 import {addTodo, fetchTodo} from "./Redux/Slice/todoSlice";
