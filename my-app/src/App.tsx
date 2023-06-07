@@ -31,7 +31,7 @@ function App() {
     return (
         <div className="App">
             <button onClick={onClickHandlerTheme}>theme</button>
-            <h3>Todo-List:</h3>
+            <h3>To-do list:</h3>
             <TodoInput title={title} setTitle={setTitle} addTodo={addTask}/>
             <br/>
             {pending && <h3>Loading...</h3>}
