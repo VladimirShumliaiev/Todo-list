@@ -17,7 +17,9 @@ const TodoItem: FC<TodoItemProps> = (props) => {
     }
 
     const handleOnClick = () => {
-        dispatch(removeTodo(id))
+        if (window.confirm('remove todo?')){
+            dispatch(removeTodo(id))
+        }
     }
     return (
         <div>
