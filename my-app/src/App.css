@@ -11,3 +11,27 @@ body[theme-data='dark'] {
     background: black;
     color: white;
 }
+
+.Pagination{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    font-size: 1.2rem;
+}
+
+.pageNum {
+    padding: 8px 10px;
+    border-radius: 3px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+a.active {
+    background-color: darkorchid;
+    color: white;
+}
+
+.image {
+    padding: 1px;
+}
