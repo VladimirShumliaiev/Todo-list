@@ -1,23 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import {useAppDispatch, useAppSelector} from "./Hooks/hooks";
-import {addTodo, fetchTodo} from "./Redux/Slice/todoSlice";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
+import {addTodo, fetchTodo} from "./Redux/Slice/todoSlice";
 
 function App() {
     const [title, setTitle] = useState('')
-    const [theme, setTheme] = useState('light')
     const dispatch = useAppDispatch()
+    const [theme, setTheme] = useState('light')
     const {error, pending} = useAppSelector(state => state.todo)
-
-    useEffect(() => {
-        dispatch(fetchTodo())
-    }, [dispatch])
-
-    const addTask = () => {
-        dispatch(addTodo(title))
-    }
 
     useEffect(() => {
         document.body.setAttribute('theme-data', theme)
@@ -27,13 +19,20 @@ function App() {
         setTheme(theme === 'light' ? 'dark' : 'light')
     }
 
+    useEffect(() => {
+        dispatch(fetchTodo())
+    },[])
+
+    const addTask = () => {
+        dispatch(addTodo(title))
+    }
+
 
     return (
         <div className="App">
             <button onClick={onClickHandlerTheme}>theme</button>
             <h3>To-do list:</h3>
             <TodoInput title={title} setTitle={setTitle} addTodo={addTask}/>
-            <br/>
             {pending && <h3>Loading...</h3>}
             {error && <h3>{error}</h3>}
             <TodoList/>
