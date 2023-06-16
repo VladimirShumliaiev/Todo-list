@@ -9,34 +9,32 @@ type TodoItemProps = {
 }
 
 const TodoItem: FC<TodoItemProps> = (props) => {
-    const {id, completed, title} = props
+    const {completed, title, id} = props
     const dispatch = useAppDispatch()
 
-    const handleOneChange = () => {
-        if (!completed) {
-            console.log('toggle')
-        } else {
-            console.log('remove toggle')
-        }
-
-        dispatch(toggleTodo(id))
-    }
-
-    const handleOnClick = () => {
-        if (window.confirm('remove todo?')){
+    const handleRemove = () => {
+        if (window.confirm('remove todo?'))
+        {
             dispatch(removeTodo(id))
         }
     }
+
+    const handleToggle = () => {
+      dispatch(toggleTodo(id))
+    }
+
+
     return (
-        <li>
+        <div>
             <input
                 type="checkbox"
                 checked={completed}
-                onChange={handleOneChange}
+                onChange={handleToggle}
             />
             {title}
-            <button onClick={handleOnClick}>x</button>
-        </li>
+
+            <button onClick={handleRemove}>x</button>
+        </div>
     );
 };
 

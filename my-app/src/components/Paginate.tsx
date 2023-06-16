@@ -1,13 +1,14 @@
 import React, {FC} from 'react';
 import ReactPaginate from "react-paginate";
+import '../App.css'
 
 type PaginateProps = {
     pageCount: number
     handlePageClick: (event: any) => void
 }
 
-const Paginate: FC<PaginateProps> = (props) => {
-    const {handlePageClick, pageCount} = props
+const Paginate: FC<PaginateProps>  = (props) => {
+        const {pageCount, handlePageClick} = props
     return (
         <div>
             <ReactPaginate
