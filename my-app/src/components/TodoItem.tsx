@@ -13,6 +13,12 @@ const TodoItem: FC<TodoItemProps> = (props) => {
     const dispatch = useAppDispatch()
 
     const handleOneChange = () => {
+        if (!completed) {
+            console.log('toggle')
+        } else {
+            console.log('remove toggle')
+        }
+
         dispatch(toggleTodo(id))
     }
 
