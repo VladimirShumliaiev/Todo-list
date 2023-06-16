@@ -22,7 +22,7 @@ const TodoItem: FC<TodoItemProps> = (props) => {
         }
     }
     return (
-        <div>
+        <li>
             <input
                 type="checkbox"
                 checked={completed}
@@ -30,7 +30,7 @@ const TodoItem: FC<TodoItemProps> = (props) => {
             />
             {title}
             <button onClick={handleOnClick}>x</button>
-        </div>
+        </li>
     );
 };
 

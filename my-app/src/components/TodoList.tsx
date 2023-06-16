@@ -3,7 +3,6 @@ import {useAppSelector} from "../Hooks/hooks";
 import TodoItem from "./TodoItem";
 import ReactPaginate from "react-paginate";
 
-
 const TodoList = () => {
 const selector = useAppSelector(state => state.todo.list)
 
