@@ -1,9 +1,40 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import Input from "./components/Input";
+import List from "./components/List";
+import {useAppDispatch, useAppSelector} from "./hooks/hooks";
+import {addTodo, fetchTodo} from "./ReduxTK/slices/todoSlice";
+import './App.css';
 
 const App = () => {
+    const [title, setTitle] = useState('')
+    const {error, pending} = useAppSelector(state => state.todo)
+    const [theme, setTheme] = useState('light')
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        document.body.setAttribute('theme-data', theme)
+    })
+
+
+    useEffect(() => {
+        dispatch(fetchTodo())
+    },[dispatch])
+
+    const addTask = () => {
+        dispatch(addTodo(title))
+    }
+
+    const handleThem = () => {
+        setTheme(theme === 'light' ? 'dark' : 'light')
+    }
+
     return (
-        <div>
-            
+        <div className={'App'}>
+            <button onClick={handleThem}>theme</button>
+            <Input title={title} setTitle={setTitle} addTodo={addTask}/>
+            {pending && <h3>Loading...</h3>}
+            {error && <h3>{error}</h3>}
+            <List/>
         </div>
     );
 };
