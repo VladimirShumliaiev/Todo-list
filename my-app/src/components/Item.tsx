@@ -13,7 +13,9 @@ const Item: FC<ItemProps> = (props) => {
     const dispatch = useAppDispatch()
 
     const handleRemoveTodo = () => {
-        dispatch(removeTodo(id))
+        if (window.confirm('delete todo?')) {
+            dispatch(removeTodo(id))
+        }
     }
 
     const handleToggle = () => {
@@ -22,7 +24,7 @@ const Item: FC<ItemProps> = (props) => {
 
     return (
         <div>
-            <input type="checkbox" checked={completed} onChange={handleToggle} />
+            <input type="checkbox" checked={completed} onChange={handleToggle}/>
             {title}
             <button onClick={handleRemoveTodo}>x</button>
         </div>
