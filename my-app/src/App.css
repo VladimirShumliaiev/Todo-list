@@ -29,7 +29,7 @@ body[theme-data='dark'] {
 }
 
 a.active {
-    background-color: darkorchid;
+    background-color: #5609a9;
     color: white;
 }
 
