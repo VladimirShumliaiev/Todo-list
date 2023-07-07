@@ -26,7 +26,7 @@ const Input: FC<InputProps> = (props) => {
                 ref={inputRef}
                 placeholder={'add text...'}
             />
-            <button>add text</button>
+            <button>add</button>
         </form>
     );
 };
