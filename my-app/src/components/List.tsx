@@ -9,7 +9,7 @@ const List = () => {
     const [currentItems, setCurrentItems] = useState(ListSelector);
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
-    const itemsPerPage = 9
+    const itemsPerPage = 8
 
     useEffect(() => {
         const endOffset = itemOffset + itemsPerPage;
