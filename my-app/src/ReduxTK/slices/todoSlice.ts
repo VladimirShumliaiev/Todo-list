@@ -92,7 +92,7 @@ export const removeTodo = createAsyncThunk<string, string, {rejectValue: string}
                  state.pending = false
              })
              .addCase(addTodo.pending, state => {
-                 state.pending = true
+                 state.pending = false
              })
              .addCase(addTodo.fulfilled, (state, action) => {
                  state.list.push(action.payload)
