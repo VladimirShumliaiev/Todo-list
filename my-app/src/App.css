@@ -1,6 +1,35 @@
 .App {
     text-align: center;
+    display: grid;
+    grid-template-areas:'hl hr''n n''f f';
+    /*grid-template-rows: 1000px 5%;*/
+    width: 1250px;
+    grid-template-columns: 95% 5%;
     padding: 5px;
+    margin: 0 auto;
+}
+
+.headerL {
+    background: #0048ff;
+    display: grid;
+    grid-area: hl;
+}
+
+.headerR {
+    display: grid;
+    grid-area: hr;
+}
+
+.n {
+    background: #ccc432;
+    display: grid;
+    grid-area: n;
+}
+
+.f {
+    background: #ccc432;
+    display: grid;
+    grid-area: f;
 }
 
 body[theme-data='light'] {

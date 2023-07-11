@@ -30,11 +30,18 @@ const App = () => {
 
     return (
         <div className={'App'}>
-            <button onClick={handleThem}>theme</button>
-            <Input title={title} setTitle={setTitle} addTodo={addTask}/>
-            {pending && <h3>Loading...</h3>}
-            {error && <h3>{error}</h3>}
-            <List/>
+            <div className={'headerR'}>
+                <button onClick={handleThem}>theme</button>
+            </div>
+            <div className={'headerL'}>
+                <Input title={title} setTitle={setTitle} addTodo={addTask}/>
+
+            </div>
+            <div className={'n'}>
+                {pending && <h3>Loading...</h3>}
+                {error && <h3>{error}</h3>}
+                <List/>
+            </div>
         </div>
     );
 };
