@@ -21,7 +21,7 @@
 }
 
 .n {
-    background: #ccc432;
+    background: yellow;
     display: grid;
     grid-area: n;
 }
