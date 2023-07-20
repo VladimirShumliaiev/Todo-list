@@ -27,7 +27,8 @@
 }
 
 .f {
-    background: #32cc3a;
+    background: #fa4a0a;
+    color: #fdfdfd;
     display: grid;
     grid-area: f;
 }
@@ -48,18 +49,19 @@ body[theme-data='dark'] {
     justify-content: center;
     gap: 5px;
     font-size: 1.5rem;
+
 }
 
 .pageNum {
-    padding: 8px 10px;
+    padding: 8px 15px;
     border-radius: 3px;
     font-weight: 400;
     cursor: pointer;
 }
 
 a.active {
-    background-color: #0048ff;
-    color: white;
+    background-color: #fdfdfd;
+    color: #000000;
 }
 
 .image {

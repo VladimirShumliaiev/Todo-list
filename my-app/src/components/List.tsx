@@ -24,24 +24,27 @@ const List = () => {
     };
 
     return (
-        <div>
+        <div >
             {
                 currentItems.map(todo => <Item key={todo.id}{...todo}/>)
             }
-            <ReactPaginate
-                breakLabel="..."
-                nextLabel="next >"
-                onPageChange={handlePageClick}
-                pageRangeDisplayed={5}
-                pageCount={pageCount}
-                previousLabel="< previous"
-                renderOnZeroPageCount={null}
-                containerClassName={'Pagination'}
-                pageLinkClassName={'pageNum'}
-                previousLinkClassName={'pageNum'}
-                nextLinkClassName={'pageNum'}
-                activeLinkClassName={'active'}
-            />
+            <div className={'f'}>
+                <ReactPaginate
+                    breakLabel="..."
+                    nextLabel="next >"
+                    onPageChange={handlePageClick}
+                    pageRangeDisplayed={5}
+                    pageCount={pageCount}
+                    previousLabel="< previous"
+                    renderOnZeroPageCount={null}
+                    containerClassName={'Pagination'}
+                    pageLinkClassName={'pageNum'}
+                    previousLinkClassName={'pageNum'}
+                    nextLinkClassName={'pageNum'}
+                    activeLinkClassName={'active'}
+                />
+            </div>
+
         </div>
     );
 };
