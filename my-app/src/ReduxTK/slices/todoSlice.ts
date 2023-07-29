@@ -57,7 +57,7 @@ export const toggleTodo = createAsyncThunk<Todo, string, { rejectValue: string, 
             const response = await axios.patch(`https://jsonplaceholder.typicode.com/todos/${id}`)
 
             if (!response) {
-                return rejectWithValue('error toggle')
+                return rejectWithValue('error toggle.')
             }
             return await response.data
         }
