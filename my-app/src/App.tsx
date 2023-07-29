@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import Input from "./components/Input";
 import List from "./components/List";
-import {useAppDispatch, useAppSelector} from "./hooks/hooks";
+import {useAppDispatch} from "./hooks/hooks";
 import {addTodo, fetchTodo} from "./ReduxTK/slices/todoSlice";
 import './App.css';
 
 const App = () => {
-    const [title, setTitle] = useState('')
-    const {error, pending} = useAppSelector(state => state.todo)
     const [theme, setTheme] = useState('light')
+    const [title, setTitle] = useState('')
     const dispatch = useAppDispatch()
 
     useEffect(() => {
@@ -18,11 +17,12 @@ const App = () => {
 
     useEffect(() => {
         dispatch(fetchTodo())
-    },[])
+    }, [])
 
     const addTask = () => {
         dispatch(addTodo(title))
     }
+
 
     const handleThem = () => {
         setTheme(theme === 'light' ? 'dark' : 'light')
@@ -35,11 +35,8 @@ const App = () => {
             </div>
             <div className={'headerL'}>
                 <Input title={title} setTitle={setTitle} addTodo={addTask}/>
-
             </div>
             <div className={'n'}>
-                {pending && <h3>Loading...</h3>}
-                {error && <h3>{error}</h3>}
                 <List/>
             </div>
         </div>
