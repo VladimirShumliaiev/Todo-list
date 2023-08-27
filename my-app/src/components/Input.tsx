@@ -27,7 +27,7 @@ const Input: FC<InputState> = (props) => {
                    ref={inputRef}
                    placeholder={'Title...'}
             />
-            <button>add</button>
+            <button>add todos</button>
         </form>
     );
 };
