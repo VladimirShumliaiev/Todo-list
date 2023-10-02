@@ -21,7 +21,7 @@ const Item: FC<ItemProps> = (props) => {
 
     return (
         <div>
-            <input type="checkbox" checked={completed} onChange={() => dispatch(toggleTodo(id))}/>
+            <input type="checkbox" checked={completed} onChange={() => dispatch(() => toggleTodo(id))}/>
             {title}
             <button onClick={handleDelete}>delete</button>
         </div>
