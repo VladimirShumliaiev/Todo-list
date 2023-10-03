@@ -19,9 +19,13 @@ const Item: FC<ItemProps> = (props) => {
         }
     }
 
+    const handleToggleTodo = () => {
+        dispatch(toggleTodo(id))
+    }
+
     return (
         <div>
-            <input type="checkbox" checked={completed} onChange={() => dispatch(toggleTodo(id))}/>
+            <input type="checkbox" checked={completed} onChange={handleToggleTodo}/>
             {title}
             <button onClick={handleDelete}>delete</button>
         </div>
