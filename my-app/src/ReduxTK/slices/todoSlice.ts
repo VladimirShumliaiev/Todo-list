@@ -25,7 +25,7 @@ export const fetchTodo = createAsyncThunk<Todo[], undefined, { rejectValue: stri
         const response = await axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
 
         if (!response) {
-            return rejectWithValue('error fetchTodo.')
+            return rejectWithValue('error fetchTodo')
         }
         return await response.data
     }
