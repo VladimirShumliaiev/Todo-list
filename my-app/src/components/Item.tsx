@@ -26,7 +26,9 @@ const Item: FC<ItemProps> = (props) => {
     return (
         <div>
             <input type="checkbox" checked={completed} onChange={handleToggleTodo}/>
+            <hr/>
             {title}
+            <hr/>
             <button onClick={handleDelete}>delete</button>
         </div>
     );
