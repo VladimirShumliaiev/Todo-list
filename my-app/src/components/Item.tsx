@@ -29,7 +29,7 @@ const Item: FC<ItemProps> = (props) => {
             <hr/>
             {title}
             <hr/>
-            <button onClick={handleDelete}>delete</button>
+            <button onClick={handleDelete}>Delete</button>
         </div>
     );
 };
