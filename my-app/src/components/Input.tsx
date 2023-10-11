@@ -25,7 +25,7 @@ const Input: FC<InputState> = (props) => {
             <input value={title}
                    onChange={onChangeHandle}
                    ref={inputRef}
-                   placeholder={'Hello World!!!'}
+                   placeholder={'Todos...'}
             />
             <button>add todos</button>
         </form>
