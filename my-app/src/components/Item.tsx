@@ -14,7 +14,7 @@ const Item: FC<ItemProps> = (props) => {
     const dispatch = useAppDispatch()
 
     const handleDelete = () => {
-        if (window.confirm(`delete todo? ${title}`)) {
+        if (window.confirm(`delete todo ${title}???`)) {
             dispatch(removeTodo(id))
         }
     }
