@@ -25,7 +25,7 @@ const Input:FC<TodoInput> = (props) => {
         <div>
             <form onSubmit={onSubmitHandle}>
                 <input value={title} onChange={handleOnChange}/>
-                <button>add Todos</button>
+                <button>add task</button>
             </form>
         </div>
     );
