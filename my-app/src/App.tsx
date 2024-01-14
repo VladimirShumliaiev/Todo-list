@@ -32,7 +32,7 @@ const App = () => {
                 <button onClick={handleThem}>theme</button>
             </div>
             <div className={'headerL'}>
-                My todos list:
+                Todos list:
             </div>
             <div className={'n'}>
                 <Input title={title} setTitle={setTitle} addTodo={addTask}/>
