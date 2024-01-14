@@ -17,7 +17,7 @@ const Item:FC<ItemProps> = (props) => {
     }
 
     const onClickHandle: React.MouseEventHandler<HTMLButtonElement> = () => {
-        if (window.confirm('delete todo?')) {
+        if (window.confirm('do you want to delete todo?')) {
             dispatch(removeTodo(id))
         }
     }
