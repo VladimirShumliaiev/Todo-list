@@ -1,16 +1,15 @@
 import React, {FC} from 'react';
 
-type TodoInput = {
+type InputProps = {
     title: string
     setTitle: (str: string) => void
     addTodo: () => void
 }
 
-const Input:FC<TodoInput> = (props) => {
+const Input: FC<InputProps> = (props) => {
+    const {title, setTitle, addTodo} = props
 
-    const {title,setTitle, addTodo} = props
-
-    const handleOnChange:  React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    const onchangeHandle: React.ChangeEventHandler<HTMLInputElement> = (event) => {
         setTitle(event.target.value)
     }
 
@@ -20,12 +19,11 @@ const Input:FC<TodoInput> = (props) => {
         setTitle('')
     }
 
-
     return (
         <div>
             <form onSubmit={onSubmitHandle}>
-                <input value={title} onChange={handleOnChange}/>
-                <button>add task</button>
+                <input type={"text"} value={title} onChange={onchangeHandle} placeholder={'add todos...'}/>
+                <button>add</button>
             </form>
         </div>
     );

@@ -26,6 +26,7 @@ const App = () => {
         dispatch(addTodo(title))
     }
 
+
     return (
         <div className={'App'}>
             <div className={'headerR'}>
@@ -36,7 +37,7 @@ const App = () => {
             </div>
             <div className={'n'}>
                 <Input title={title} setTitle={setTitle} addTodo={addTask}/>
-                <List />
+                <List/>
             </div>
         </div>
     );
