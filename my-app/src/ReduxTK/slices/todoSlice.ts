@@ -2,56 +2,38 @@ import {AnyAction, createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/
 import axios from "axios";
 
 type Todo = {
-    id: string,
-    title: string,
-    completed: boolean,
+    id: string
+    title: string
+    completed: boolean
 }
 
 type TodoState = {
-    list: Todo[],
-    error: null | string,
+    todoList: Todo[]
     pending: boolean
+    error: string | null
 }
 
 const initialState: TodoState = {
-    list: [],
-    error: null,
+    todoList: [],
     pending: false,
+    error: null
 }
 
 export const fetchTodo = createAsyncThunk<Todo[], undefined, { rejectValue: string }>(
     'Todo/fetchTodo',
     async (_, {rejectWithValue}) => {
-        const response = await axios.get('https://jsonplaceholder.typicode.com/todos?_limit=20')
+        const response = await axios.get('https://jsonplaceholder.typicode.com/todos/?_limit=21')
 
         if (!response) {
-            return rejectWithValue('error fetchTodo!!!!!')
+            return rejectWithValue('Error fetch')
         }
-
-        return await response.data
-    }
-)
-
-export const toggleTodo = createAsyncThunk<Todo, string, { rejectValue: string, state: { todo: TodoState } }>(
-    'Todo/toggleTodo',
-    async (id, {getState, rejectWithValue}) => {
-        const toggle = getState().todo.list.find(e => e.id === id)
-
-        if (toggle) {
-            const response = await axios.patch(`https://jsonplaceholder.typicode.com/todos/${id}`,)
-
-            if (!response) {
-                return rejectWithValue('error toggle')
-            }
-            return await response.data as Todo
-        }
-        return rejectWithValue('ERROR')
+        return response.data
     }
 )
 
 export const addTodo = createAsyncThunk<Todo, string, { rejectValue: string }>(
     'Todo/addTodo',
-    async (title, {rejectWithValue}) => {
+    async function (title, {rejectWithValue}) {
         const response = await axios.post(`https://jsonplaceholder.typicode.com/todos`, {
             id: Date.now(),
             title: title,
@@ -59,67 +41,79 @@ export const addTodo = createAsyncThunk<Todo, string, { rejectValue: string }>(
         })
 
         if (!response) {
-            return rejectWithValue('error add todo')
+            return rejectWithValue('Error add todo')
         }
-
-        return await response.data as Todo
+        return response.data
     }
 )
 
+export const toggleTodo = createAsyncThunk<Todo, string, { rejectValue: string, state: { todo: TodoState } }>(
+    'Todo/toggleTodo',
+    async (id, {getState, rejectWithValue}) => {
+        const toggle = getState().todo.todoList.find(e => e.id === id)
+
+        if (toggle) {
+            const response = await axios.patch(`https://jsonplaceholder.typicode.com/todos/${id}`)
+
+            if (!response) {
+                return rejectWithValue('error toggle')
+            }
+            return response.data as Todo
+        }
+        return rejectWithValue('ERROR GLOBAL TOGGLE')
+    }
+)
 
 export const removeTodo = createAsyncThunk<string, string, { rejectValue: string }>(
     'Todo/removeTodo',
     async (id, {rejectWithValue}) => {
+
         const response = await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
 
         if (!response) {
-            return rejectWithValue('error delete todo')
+            return rejectWithValue('Error delete todo')
         }
-
         return id
     }
 )
 
 const todoSlice = createSlice({
     name: 'Todo',
-    initialState: initialState,
+    initialState,
     reducers: {},
-    extraReducers: builder => {
+    extraReducers: builder =>
         builder
-            .addCase(fetchTodo.pending, (state) => {
+            .addCase(fetchTodo.pending, state => {
                 state.pending = true
                 state.error = null
             })
             .addCase(fetchTodo.fulfilled, (state, action) => {
-                state.list = action.payload
+                state.todoList = action.payload
                 state.pending = false
             })
             .addCase(addTodo.pending, state => {
                 state.pending = false
             })
             .addCase(addTodo.fulfilled, (state, action) => {
-                state.list.push(action.payload)
+                state.todoList.push(action.payload)
                 state.pending = false
             })
             .addCase(toggleTodo.fulfilled, (state, action) => {
-                const toggle = state.list.find(e => e.id === action.payload.id)
+                const toggle = state.todoList.find(e => e.id === action.payload.id)
                 if (toggle) {
                     toggle.completed = !toggle.completed
                 }
             })
             .addCase(removeTodo.fulfilled, (state, action) => {
-                state.list = state.list.filter(e => e.id !== action.payload)
+                state.todoList = state.todoList.filter(e => e.id !== action.payload)
             })
             .addMatcher(isError, (state, action: PayloadAction<string>) => {
                 state.error = action.payload
                 state.pending = false
-
             })
-    }
 })
 
 const isError = (action: AnyAction) => {
     return action.type.endsWith('rejected')
 }
-
 export default todoSlice.reducer
