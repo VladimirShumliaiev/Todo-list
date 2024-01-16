@@ -3,11 +3,11 @@ import {useAppSelector} from "../hooks/hooks";
 import Item from "./Item";
 
 const List = () => {
-    const todoListSelector = useAppSelector(state => state.todo.list)
+    const list = useAppSelector(state => state.todo.todoList)
     return (
         <div>
             {
-                todoListSelector.map(e => <Item key={e.id} {...e}/>)
+                list.map(e => <Item key={e.id} {...e}/>)
             }
         </div>
     );
