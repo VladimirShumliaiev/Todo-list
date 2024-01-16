@@ -6,14 +6,14 @@ type InputProps = {
     addTodo: () => void
 }
 
-const Input: FC<InputProps> = (props) => {
+const Input:FC<InputProps> = (props) => {
     const {title, setTitle, addTodo} = props
 
     const onchangeHandle: React.ChangeEventHandler<HTMLInputElement> = (event) => {
         setTitle(event.target.value)
     }
 
-    const onSubmitHandle:  React.FormEventHandler<HTMLFormElement> = (event) => {
+    const onSubmitHandle:React.FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault()
         addTodo()
         setTitle('')
@@ -22,7 +22,7 @@ const Input: FC<InputProps> = (props) => {
     return (
         <div>
             <form onSubmit={onSubmitHandle}>
-                <input type={"text"} value={title} onChange={onchangeHandle} placeholder={'add todos...'}/>
+                <input value={title} onChange={onchangeHandle} placeholder={'add...'}/>
                 <button>add</button>
             </form>
         </div>
