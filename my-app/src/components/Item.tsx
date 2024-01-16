@@ -3,32 +3,30 @@ import {useAppDispatch} from "../hooks/hooks";
 import {removeTodo, toggleTodo} from "../ReduxTK/slices/todoSlice";
 
 type ItemProps = {
-    title: string
     id: string
+    title: string
     completed: boolean
-
 }
 
 const Item: FC<ItemProps> = (props) => {
-    const {title, completed, id} = props
+    const {id, completed, title} = props
     const dispatch = useAppDispatch()
 
-    const onChangeHandle: React.ChangeEventHandler<HTMLInputElement>  = () => {
+    const onchangeHandle = () => {
         dispatch(toggleTodo(id))
     }
 
-    const onClickHandle: React.MouseEventHandler<HTMLButtonElement> = () => {
-        if (window.confirm('delete todo?')){
+    const onClickHandle = () => {
+        if (window.confirm('delete todo?')) {
             dispatch(removeTodo(id))
         }
-
     }
 
     return (
         <div>
-            <input type="checkbox" checked={completed} onChange={onChangeHandle}/>
+            <input type="checkbox" checked={completed} onChange={onchangeHandle}/>
             {title}
-            <button onClick={onClickHandle}>&times;</button>
+            <button onClick={onClickHandle}>delete</button>
         </div>
     );
 };
