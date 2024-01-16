@@ -1,14 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import Input from "./components/Input";
-import List from "./components/List";
 import {useAppDispatch} from "./hooks/hooks";
 import {addTodo, fetchTodo} from "./ReduxTK/slices/todoSlice";
+import Input from "./components/Input";
+import List from "./components/List";
+
 
 const App = () => {
     const [theme, setTheme] = useState('light')
     const [title, setTitle] = useState('')
     const dispatch = useAppDispatch()
+
 
     useEffect(() => {
         document.body.setAttribute('theme-data', theme)
@@ -20,12 +22,11 @@ const App = () => {
 
     useEffect(() => {
         dispatch(fetchTodo())
-    },[dispatch])
+    },[])
 
     const addTask = () => {
         dispatch(addTodo(title))
     }
-
 
     return (
         <div className={'App'}>
