@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {useAppSelector} from "../hooks/hooks";
 import Item from "./Item";
 import ReactPaginate from "react-paginate";
-import styles from './List.module.css';
+// @ts-ignore
+import style from './List.module.css'
 
 
 const List = () => {
@@ -36,11 +37,11 @@ const List = () => {
                 pageCount={pageCount}
                 previousLabel="< previous"
                 renderOnZeroPageCount={null}
-                containerClassName={styles.Pagination}
-                pageLinkClassName={styles.pageNum}
-                previousLinkClassName={styles.pageNum}
-                nextLinkClassName={styles.pageNum}
-                activeLinkClassName={styles.active}
+                containerClassName={style.Pagination}
+                pageLinkClassName={style.pageNum}
+                previousLinkClassName={style.pageNum}
+                nextLinkClassName={style.pageNum}
+                activeLinkClassName={style.active}
             />
         </div>
     );
