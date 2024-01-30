@@ -1,9 +1,16 @@
-import React from 'react';
+import React, {FC} from 'react';
 
-const Item = () => {
+type ItemProps = {
+    id: string
+    title: string
+    completed: boolean
+}
+
+const Item: FC<ItemProps> = (props) => {
+    const {id, title, completed} = props
     return (
         <div>
-            Test Test
+            {title}
         </div>
     );
 };
