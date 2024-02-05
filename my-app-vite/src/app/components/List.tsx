@@ -9,7 +9,7 @@ const List = () => {
     return (
         <div>
             {
-                list.map(e =>  <Item key={e.title} {...e}/>)
+                list.map(e =>  <Item ket={e.id} {...e}/>)
             }
         </div>
     );
