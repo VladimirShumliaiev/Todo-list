@@ -4,7 +4,7 @@ const Button = () => {
     return (
         <div>
             <input type="text"/>
-            <button>push</button>
+            <button>add</button>
         </div>
     );
 };
