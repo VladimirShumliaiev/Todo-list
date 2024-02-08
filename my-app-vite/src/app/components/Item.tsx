@@ -12,7 +12,7 @@ const Item: FC<ItemProps> = (props) => {
         <div>
             <input type={"checkbox"} checked={completed}/>
             {title}
-            <button>&times;</button>
+            <button>x</button>
         </div>
     );
 };
