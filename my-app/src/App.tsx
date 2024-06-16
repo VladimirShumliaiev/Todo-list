@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import Todo from './componets/Todo';
 
 function App() {
   return (
     <div className="App">
-          Hello world
+          <Todo/>
     </div>
   );
 }

@@ -1,19 +1,19 @@
-import { createAsyncThunk, createSlice, isRejectedWithValue} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from 'axios'
 
 export type Todo = {
-    id: string
+    id: string 
     title: string
     completed: boolean
 }
 
-type todoState = {
-    list: Todo[],
+type TodoState = {
+    list: Todo[]
     error: null | string
     pending: boolean
 }
 
-const initialState: todoState = {
+const initialState: TodoState = {
     list: [],
     error: null,
     pending: false,
@@ -49,13 +49,13 @@ export const addTodo = createAsyncThunk<Todo, string, {rejectValue: string}>(
     }
 )
 
-export const toggleTodo = createAsyncThunk<Todo, string, {rejectValue: string, state: {todo: todoState}}>(
+export const toggleTodo = createAsyncThunk<Todo, string, {rejectValue: string, state: {todo: TodoState}}>(
     'Todo/toggleTodo',
     async (id, {rejectWithValue, getState}) => {
         const toggle = getState().todo.list.find(e => e.id === id)
 
         if (toggle) {
-           const response = await axios.patch('https://jsonplaceholder.typicode.com/todos/${id}')
+           const response = await axios.patch(`https://jsonplaceholder.typicode.com/todos/${id}`)
 
            if (!response) {
             return rejectWithValue ('Error toggle todo')
@@ -69,7 +69,7 @@ export const toggleTodo = createAsyncThunk<Todo, string, {rejectValue: string, s
 export const deleteTodo = createAsyncThunk<string,string, {rejectValue: string}>(
     'Todo/deleteTodo',
     async (id, {rejectWithValue}) => {
-        const respons = await axios.delete('https://jsonplaceholder.typicode.com/todos/${id}')
+        const respons = await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
 
         if (!respons) {
             return rejectWithValue('Error delete todo')
@@ -102,10 +102,10 @@ const todoSlice = createSlice({
             state.pending = false
         })
         .addCase(toggleTodo.fulfilled, (state, action) => {   
-          const toggle = state.list.find(e => e.id === action.payload.id )
+          const tog = state.list.find(e => e.id === action.payload.id)
 
-          if (toggle) {
-            toggle.completed = !toggle.completed
+          if (tog) {
+            tog.completed = !tog.completed
           }
         })
         .addCase(deleteTodo.fulfilled, (state, action) => {
