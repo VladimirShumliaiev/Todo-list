@@ -19,8 +19,8 @@ const initialState: todoState = {
     pending: false,
 }
 
-export const todoFetch = createAsyncThunk<Todo[], undefined, {rejectValue: string}>(
-    'Todo/todoFetch',
+export const fetchTodo = createAsyncThunk<Todo[], undefined, {rejectValue: string}>(
+    'Todo/fetchTodo',
     async (_,{rejectWithValue}) => {
         const response = await axios('https://jsonplaceholder.typicode.com/todos')
 
@@ -82,7 +82,35 @@ export const deleteTodo = createAsyncThunk<string,string, {rejectValue: string}>
 const todoSlice = createSlice({
    name: 'Todo',
    initialState,
-   reducers: {}
+   reducers: {},
+   extraReducers: builder => 
+    builder
+        .addCase(fetchTodo.pending, state => {
+            state.pending = true
+            state.error = null
+        })
+        .addCase(fetchTodo.fulfilled, (state, action) => {
+            state.list = action.payload
+            state.pending = false
+        })
+        .addCase(addTodo.pending, state => {
+            state.pending = true
+            state.error = null
+        })
+        .addCase(addTodo.fulfilled, (state, action) => {
+            state.list.push(action.payload)
+            state.pending = false
+        })
+        .addCase(toggleTodo.fulfilled, (state, action) => {   
+          const toggle = state.list.find(e => e.id === action.payload.id )
+
+          if (toggle) {
+            toggle.completed = !toggle.completed
+          }
+        })
+        .addCase(deleteTodo.fulfilled, (state, action) => {
+            state.list = state.list.filter(e => e.id !== action.payload)
+        })
 })
 
 export default todoSlice.reducer
