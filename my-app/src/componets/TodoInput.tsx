@@ -30,7 +30,7 @@ const TodoInput: FC<TodoInputTipe> = (props) => {
        ref={inputRef}
        placeholder={'add title...'}
         />
-      <button> add </button>
+      <button> ok</button>
     </form>
   )
 }
