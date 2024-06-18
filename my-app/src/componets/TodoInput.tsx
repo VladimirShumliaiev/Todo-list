@@ -1,4 +1,5 @@
 import React, { FC, useRef } from 'react'
+import style from './Todo.module.css'
 
 type TodoInputTipe = {
   text: string
@@ -30,7 +31,7 @@ const TodoInput: FC<TodoInputTipe> = (props) => {
        ref={inputRef}
        placeholder={'add title...'}
         />
-      <button> add </button>
+      <button className={style.item}> add </button>
     </form>
   )
 }

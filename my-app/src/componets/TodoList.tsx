@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAppSelector} from '../hooks/hooks';
 import ReactPaginate from 'react-paginate'
-import './Todo.css'
 import TodoItem from './TodoItem'
 
 

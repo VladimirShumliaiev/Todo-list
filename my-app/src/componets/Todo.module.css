@@ -1,4 +1,8 @@
 
+.item {
+    color: #d81414;
+}
+
 .Pagination{
     list-style: none;
     display: flex;
