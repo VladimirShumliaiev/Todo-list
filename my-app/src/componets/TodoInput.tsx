@@ -32,6 +32,7 @@ const TodoInput: FC<TodoInputTipe> = (props) => {
        placeholder={'add title...'}
         />
       <button className={style.item}> add </button>
+      <pre/>
     </form>
   )
 }
