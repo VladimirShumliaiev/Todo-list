@@ -18,7 +18,7 @@ const TodoList = () => {
      const endOffset = itemOffset + itemsPerPage;
      setCurrentItems(todoList.slice(itemOffset, endOffset));
      setPageCount(Math.ceil(todoList.length / itemsPerPage));
-   }, [itemOffset, itemsPerPage, TodoList]);
+   }, [itemOffset, itemsPerPage, todoList]);
  
    const handlePageClick = (event: any) => {
      const newOffset = event.selected * itemsPerPage % todoList.length;
