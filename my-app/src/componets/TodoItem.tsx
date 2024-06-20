@@ -21,7 +21,7 @@ const TodoItem: FC<Todo> = (props) => {
     <div>
       <input type='checkbox' checked={completed} onChange={onChangeHandle}/>
       {title}
-      <button onClick={onClickHandle}> delete </button>
+      <button onClick={onClickHandle}> X </button>
 
     </div>
   )
